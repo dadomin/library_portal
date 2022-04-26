@@ -3,9 +3,10 @@ import MainMenu from "../layout/MainMenu";
 
 const Library = () => {
     return(
-        <div>
-            <MainMenu/>
-        </div>
+        <>
+            
+            <h1>라이브러리</h1>
+        </>
     )
 }
 

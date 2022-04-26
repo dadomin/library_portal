@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Alert from "../components/Alert";
 
-const Login = () => {
+const Login = ({}) => {
 
     const [id, setId] = useState("");
     const handleId = (e) => setId(e.target.value);
@@ -9,15 +10,25 @@ const Login = () => {
     const [pw, setPw] = useState("");
     const handlePw = (e) => setPw(e.target.value);
 
+    //alert창
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMsg, setAlertMsg] = useState("");
+    
+    function openAlert(msg, b) {
+        setAlertMsg(msg);
+        setShowAlert(b);
+    }
+
     function inputCheck() {
         console.log(id);
         console.log(pw);
-        if(id == "" || pw == "") {
-            alert("빈값 존재");
+        if(id === "" || pw === "") {
+            openAlert("비워진 값이 존재합니다.", true)
             return;
         }
         window.location.href= "/";
     }
+
 
     return(
         <section id="login">
@@ -27,6 +38,10 @@ const Login = () => {
                     <p>Shinhan Bank</p>
                     <h3>라이브러리 반입 프로세스</h3>
                 </div>
+                <ul className="login-mode-menu">
+                    <li><input type="radio" name="login-mode" id="login-mode-user" className="dn"defaultChecked="checked"/> <label htmlFor="login-mode-user">사용자</label></li>
+                    <li><input type="radio" name="login-mode" id="login-mode-admin" className="dn"/><label htmlFor="login-mode-admin">관리자</label></li>
+                </ul>
             </section>
             <section id="login-tab">
 
@@ -43,8 +58,9 @@ const Login = () => {
 
                     <button onClick={inputCheck}>LOGIN</button>
                 </div>
-
+                <Alert showAlert={showAlert} onClose={()=>setShowAlert(false)} alertMsg={alertMsg}/>
             </section>
+            
         </section>
     )
 

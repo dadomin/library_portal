@@ -3,9 +3,9 @@ import MainMenu from "../layout/MainMenu";
 
 function Main() {
     return (
-        <div>
-            <MainMenu/>
-        </div>
+        <>
+            <h1>메인</h1>
+        </>
     )
 }
 
