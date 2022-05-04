@@ -10,11 +10,11 @@ class App extends Component{
     render() {
         return (
             <>
+            
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Main/>}></Route>
                         <Route path="/login" element={<Login/>}></Route>
-                        <Route path="/library" element={<MainMenu/>}></Route>
                     </Routes>
                 </BrowserRouter>
             </>

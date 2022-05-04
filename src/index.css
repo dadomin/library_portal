@@ -275,7 +275,7 @@ input[name="login-mode"]:checked ~ label {
 }
 
 /* menu */
-#main-menu {
+header {
   width: 100%;
   height: 85px;
   background: linear-gradient(to right, #6280fa, #8779f2);
@@ -284,14 +284,14 @@ input[name="login-mode"]:checked ~ label {
   justify-content: space-between;
   align-items: center;
   padding: 0 70px;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
 }
-#main-menu > * {
+header > * {
   color: #fff;
 }
-#main-menu > a {
+header > a {
   font-size: 24px;
   color: #fff;
 }
@@ -354,4 +354,25 @@ input[name="login-mode"]:checked ~ label {
 .profile-tab:hover > .logout-tab {
   visibility: visible;
   opacity: 1;
+}
+
+/* footer */
+footer {
+  width: 100%;
+  height: 130px;
+  background: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 30px 100px;
+  display: flex;
+  flex-direction: row;
+}
+footer > h1 {
+  font-size: 28px;
+  margin-right: 20px;
+}
+
+footer > ul > li {
+  margin: 5px 0;
 }

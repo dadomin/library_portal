@@ -3,9 +3,13 @@ import React, { Component } from "react";
 class Footer extends Component {
     render() {
         return (
-            <div>
-                <h1>푸터</h1>
-            </div>
+            <footer>
+                <h1>ICT 운영부</h1>
+                <ul>
+                    <li>홍인택 선임(8123)</li>
+                    <li>김여리 선임(8272)</li>
+                </ul>
+            </footer>
         )
     }
 }

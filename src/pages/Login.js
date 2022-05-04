@@ -59,6 +59,7 @@ const Login = ({}) => {
                     <button onClick={inputCheck}>LOGIN</button>
                 </div>
                 <Alert showAlert={showAlert} onClose={()=>setShowAlert(false)} alertMsg={alertMsg}/>
+                
             </section>
             
         </section>
