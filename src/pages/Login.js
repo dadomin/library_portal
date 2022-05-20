@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Alert from "../components/Alert";
+import Info from "../components/Info";
 
 const Login = ({}) => {
 
@@ -19,6 +21,14 @@ const Login = ({}) => {
         setShowAlert(b);
     }
 
+    const [showInfo, setShowInfo] = useState(false);
+    const [infoMsg, setInfoMsg] = useState("");
+
+    function openInfo(msg,b){
+        setInfoMsg(msg);
+        setShowInfo(b);
+    }
+
     function inputCheck() {
         console.log(id);
         console.log(pw);
@@ -26,7 +36,33 @@ const Login = ({}) => {
             openAlert("비워진 값이 존재합니다.", true)
             return;
         }
-        window.location.href= "/";
+        
+        axios
+        .get('http://localhost:3787/getUser', {
+            params : {
+                id : id,
+                pw : pw
+            }
+        })
+        .then((res)=>{
+            let userData = res.data[0];
+            if(userData === undefined) {
+                openAlert("ID 혹은 비밀번호 오류", true);
+                return;
+            }
+            console.log("로그인 성공");
+            // console.log(JSON.stringify(userData));
+            sessionStorage.removeItem('user');
+            sessionStorage.removeItem('user_id');
+            sessionStorage.setItem('user', JSON.stringify(userData));
+            console.log(JSON.parse(sessionStorage.user))
+            // sessionStorage.user.forEach(x=>{
+            //     console.log(x);
+            // })
+            openInfo("로그인 성공", true);
+            window.location.href= "/main";
+            // console.log(sessionStorage.user);
+        })
     }
 
 
@@ -59,6 +95,7 @@ const Login = ({}) => {
                     <button onClick={inputCheck}>LOGIN</button>
                 </div>
                 <Alert showAlert={showAlert} onClose={()=>setShowAlert(false)} alertMsg={alertMsg}/>
+                <Info showInfo={showInfo} onClose={()=>setShowInfo(false)} infoMsg={infoMsg}/>
                 
             </section>
             

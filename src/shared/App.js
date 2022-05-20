@@ -13,8 +13,8 @@ class App extends Component{
             
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<Main/>}></Route>
-                        <Route path="/login" element={<Login/>}></Route>
+                        <Route path="/main" element={<Main/>}></Route>
+                        <Route path="/user/login" element={<Login/>}></Route>
                     </Routes>
                 </BrowserRouter>
             </>
