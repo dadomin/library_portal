@@ -11,13 +11,13 @@ const client = new Client({
     port: 5432
 });
 
-client.connect(err=>{
-    if(err){
-        console.err('connection error', err.stack);
-    }else {
-        console.log('success!');
+client.connect(err => {
+    if (err) {
+      console.error('connection error', err.stack)
+    } else {
+      console.log('connected')
     }
-});
+  })
 
 app.get("/getUser", function(req, res, next) {
     const query = new Query("select * from users where user_id = '" + req.query.id+"' and passwd = '" + req.query.pw + "'");

@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import Footer from "../layout/Footer";
 import MainMenu from "../layout/MainMenu";
+import Alert from "../components/Alert";
+import Info from "../components/Info";
 
 function Main() {
 
@@ -20,17 +22,15 @@ function Main() {
     //     setInfoMsg(msg);
     //     setShowInfo(b);
     // }
-    if(sessionStorage.user === undefined) {
-        window.location.href = "/user/login";
-        // console.log(JSON.parse(sessionStorage.user));
-    }else {
-        console.log(JSON.parse(sessionStorage.user));
-    }
+    
 
     return (
         <>
             <MainMenu/>
+            {/* <Alert showAlert={showAlert} onClose={()=>setShowAlert(false)} alertMsg={alertMsg}/> */}
+            {/* <Info showInfo={showInfo} onClose={()=>setShowInfo(false)} infoMsg={infoMsg}/> */}
             <Footer/>
+            
         </>
     )
 }

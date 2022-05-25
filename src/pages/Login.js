@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import Alert from "../components/Alert";
 import Info from "../components/Info";
 
-const Login = ({}) => {
+const Login = () => {
+
 
     const [id, setId] = useState("");
     const handleId = (e) => setId(e.target.value);
@@ -12,33 +13,36 @@ const Login = ({}) => {
     const [pw, setPw] = useState("");
     const handlePw = (e) => setPw(e.target.value);
 
-    //alert창
-    const [showAlert, setShowAlert] = useState(false);
-    const [alertMsg, setAlertMsg] = useState("");
     
-    function openAlert(msg, b) {
-        setAlertMsg(msg);
-        setShowAlert(b);
+    if(sessionStorage.user != null) {
+        alert("로그아웃 후 로그인 하세요");
+        window.location.href = "/";
+        return;
     }
+    //alert창
+    // function openAlert(msg, b) {
+    //     props.alertMsg = msg;
+    //     props.setShowAlert(b);
+    // }
 
-    const [showInfo, setShowInfo] = useState(false);
-    const [infoMsg, setInfoMsg] = useState("");
+    // const [showInfo, setShowInfo] = useState(false);
+    // const [infoMsg, setInfoMsg] = useState("");
 
-    function openInfo(msg,b){
-        setInfoMsg(msg);
-        setShowInfo(b);
-    }
+    // function openInfo(msg,b){
+    //     setInfoMsg(msg);
+    //     setShowInfo(b);
+    // }
 
     function inputCheck() {
         console.log(id);
         console.log(pw);
         if(id === "" || pw === "") {
-            openAlert("비워진 값이 존재합니다.", true)
+            alert("비워진 값이 존재합니다")
             return;
         }
         
         axios
-        .get('http://localhost:3787/getUser', {
+        .post('http://localhost:3787/user/login', {
             params : {
                 id : id,
                 pw : pw
@@ -47,20 +51,25 @@ const Login = ({}) => {
         .then((res)=>{
             let userData = res.data[0];
             if(userData === undefined) {
-                openAlert("ID 혹은 비밀번호 오류", true);
+                alert("ID 혹은 비밀번호 오류");
                 return;
             }
             console.log("로그인 성공");
             // console.log(JSON.stringify(userData));
             sessionStorage.removeItem('user');
+
             sessionStorage.removeItem('user_id');
             sessionStorage.setItem('user', JSON.stringify(userData));
-            console.log(JSON.parse(sessionStorage.user))
+            sessionStorage.removeItem('now');
+            sessionStorage.setItem('now', userData.admin_type);
+            console.log(sessionStorage);
             // sessionStorage.user.forEach(x=>{
             //     console.log(x);
             // })
-            openInfo("로그인 성공", true);
-            window.location.href= "/main";
+            // openInfo(`${userData.user_name}님 로그인 성공`, true);
+            
+            alert(`${JSON.parse(sessionStorage.user).user_name}님 로그인 성공`);
+            window.location.href= "/";
             // console.log(sessionStorage.user);
         })
     }
@@ -74,10 +83,10 @@ const Login = ({}) => {
                     <p>Shinhan Bank</p>
                     <h3>라이브러리 반입 프로세스</h3>
                 </div>
-                <ul className="login-mode-menu">
+                {/* <ul className="login-mode-menu">
                     <li><input type="radio" name="login-mode" id="login-mode-user" className="dn"defaultChecked="checked"/> <label htmlFor="login-mode-user">사용자</label></li>
                     <li><input type="radio" name="login-mode" id="login-mode-admin" className="dn"/><label htmlFor="login-mode-admin">관리자</label></li>
-                </ul>
+                </ul> */}
             </section>
             <section id="login-tab">
 
@@ -94,8 +103,8 @@ const Login = ({}) => {
 
                     <button onClick={inputCheck}>LOGIN</button>
                 </div>
-                <Alert showAlert={showAlert} onClose={()=>setShowAlert(false)} alertMsg={alertMsg}/>
-                <Info showInfo={showInfo} onClose={()=>setShowInfo(false)} infoMsg={infoMsg}/>
+                {/* <Alert showAlert={props.showAlert} onClose={()=>setShowAlert(false)} alertMsg={props.alertMsg}/>
+                <Info showInfo={showInfo} onClose={()=>setShowInfo(false)} infoMsg={infoMsg}/> */}
                 
             </section>
             
