@@ -43,10 +43,8 @@ const Login = () => {
         
         axios
         .post('http://localhost:3787/user/login', {
-            params : {
-                id : id,
-                pw : pw
-            }
+            id : id,
+            pw : pw
         })
         .then((res)=>{
             let userData = res.data[0];

@@ -14,3 +14,4 @@ ReactDOM.createRoot(rootNode).render(
 );
 
 reportWebVitals();
+

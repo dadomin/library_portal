@@ -5,7 +5,7 @@ import MainMenu from "../layout/MainMenu";
 import Alert from "../components/Alert";
 import Info from "../components/Info";
 
-function Main() {
+function Main(props) {
 
     // const [showAlert, setShowAlert] = useState(false);
     // const [alertMsg, setAlertMsg] = useState("");
@@ -23,13 +23,11 @@ function Main() {
     //     setShowInfo(b);
     // }
     
-
     return (
         <>
-            <MainMenu/>
             {/* <Alert showAlert={showAlert} onClose={()=>setShowAlert(false)} alertMsg={alertMsg}/> */}
             {/* <Info showInfo={showInfo} onClose={()=>setShowInfo(false)} infoMsg={infoMsg}/> */}
-            <Footer/>
+            <h1>메인</h1>
             
         </>
     )

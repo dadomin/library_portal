@@ -5,9 +5,13 @@ import Login from "../pages/Login";
 import MainMenu from "../layout/MainMenu";
 import Alert from "../components/Alert";
 import Info from "../components/Info";
-import Logout from "../pages/Logout";
+import Logout from "../action/Logout";
+import ChangeUser from "../action/ChangeUser";
+import ChangeAdmin from "../action/ChangeAdmin";
+import Footer from "../layout/Footer";
+import Tab from "./Tab";
 
-const App = () => {
+const App = (props) => {
 
     //alert창
     // const [showAlert, setShowAlert] = useState(false);
@@ -50,20 +54,17 @@ const App = () => {
             
     //     })
     // }
-
+    const tab = props.tab;
+    console.log(tab);
+    
     return (
         <>
         
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Main/>}></Route>
-                    <Route path="/login" element={<Login/>}></Route>
-                    <Route path="/logout" element={<Logout/>}></Route>
-                </Routes>
-                
-            </BrowserRouter>
+            <MainMenu/>
+            <Tab tab={tab}/>
             {/* <Alert showAlert={showAlert} onClose={()=>setShowAlert(false)} alertMsg={alertMsg}/> */}
             {/* <Info showInfo={showInfo} onClose={()=>setShowInfo(false)} infoMsg={infoMsg}/> */}
+            <Footer/>
         </>
     )
         

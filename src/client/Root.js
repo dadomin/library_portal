@@ -1,4 +1,12 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ChangeAdmin from "../action/ChangeAdmin";
+import ChangeUser from "../action/ChangeUser";
+import Logout from "../action/Logout";
+import Footer from "../layout/Footer";
+import MainMenu from "../layout/MainMenu";
+import Login from "../pages/Login";
+import Main from "../pages/Main";
 // import { Provider } from "react-redux";
 import App from "../shared/App";
 
@@ -12,9 +20,18 @@ import App from "../shared/App";
 // }
 
 const Root = () => (
-    // <Provider>
-        <App/>
-    // </Provider>
+    
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<App tab="main"/>}></Route>
+            <Route path="/login" element={<App tab="login"/>}></Route>
+            <Route path="/logout" element={<App tab="logout"/>}></Route>
+            <Route path="/change/user" element={<App tab="changeUser"/>}/>
+            <Route path="/change/admin" element={<App tab="changeAdmin"/>}/>
+            <Route path="/lib/python/req" element={<App tab="pythonReq"/>}/>
+        </Routes>
+        
+    </BrowserRouter>
 );
 
 export default Root;
