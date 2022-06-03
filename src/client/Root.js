@@ -24,7 +24,7 @@ const Root = () => (
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App tab="main"/>}></Route>
-            <Route path="/login" element={<App tab="login"/>}></Route>
+            <Route path="/login" element={<Login/>}></Route>
             <Route path="/logout" element={<App tab="logout"/>}></Route>
             <Route path="/change/user" element={<App tab="changeUser"/>}/>
             <Route path="/change/admin" element={<App tab="changeAdmin"/>}/>

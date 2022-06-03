@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 })
 
 app.post("/user/login", db.getUser);
+app.post("/lib/python/req", db.reqPyLib);
 
 // pg.query("select * from link", (err, res)=> {
 //     if(!err) console.log(res);

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React,{ useState } from "react";
 
 function PythonReqForm() {
@@ -29,6 +30,16 @@ function PythonReqForm() {
 
     const reqLib = () => {
         console.log({pyVer, libName, libVer, libReason});
+        axios
+        .post('http://localhost:3787/lib/python/req', {
+            pyVer : pyVer,
+            libVer : libVer,
+            libName : libName,
+            libReason : libReason
+        })
+        .then((res)=>{
+            
+        })
     }
 
     return(
@@ -60,6 +71,7 @@ function PythonReqForm() {
                 <button className="btn white-btn">초기화</button>
             </div>
 
+            <input type={"reset"} value="sadf"></input>
         </section>
         </>
     )

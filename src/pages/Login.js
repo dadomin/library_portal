@@ -14,7 +14,7 @@ const Login = () => {
     const handlePw = (e) => setPw(e.target.value);
 
     
-    if(sessionStorage.user != null) {
+    if(sessionStorage.getItem('user') != null) {
         alert("로그아웃 후 로그인 하세요");
         window.location.href = "/";
         return;

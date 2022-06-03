@@ -15,7 +15,7 @@ function MainMenu () {
         
     }, []);
     
-    if(sessionStorage.getItem('user') === undefined) {
+    if(now === null) {
         alert("로그인 후 이용 바랍니다.");
         window.location.href = "/login";
         return;

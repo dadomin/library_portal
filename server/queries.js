@@ -15,9 +15,16 @@ const getUser = (req,response) => {
 
 const reqPyLib = (req, res) => {
     const {pyVer, libName, libVer, libReason} = req.body;
-    // pool.query('insert into user_lib_rel(req_user_id, lib_kind, req_date, lib_reason_comment) values($1, \'python', $2, ' 그냥 요청');')
+    pool.query("insert into user_lib_rel( lib_kind, lib_reason_comment) values('python', $1)", [libReason], (error, results) =>{
+        if(error) {
+            throw error;
+        }
+        res.status(200).json(results.rows);
+        console.log(results.rows)
+    })
 }
 
 module.exports = {
-    getUser
+    getUser,
+    reqPyLib
 }
