@@ -40,7 +40,7 @@ function UserGreeting(props) {
                 <div><span>라이브러리 반입</span>
                     <div className="menu-sub">
                         <Link to ={'/lib/python/req'}>Python Library</Link>
-                        <Link to ={'/'}>Java Library</Link>
+                        <Link to ={'/lib/java/req'}>Java Library</Link>
                     </div>
                 </div>
                 <div>

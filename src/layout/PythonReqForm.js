@@ -20,6 +20,13 @@ function PythonReqForm() {
         return;
     }
 
+    const onReset = () => {
+        setPyVer("");
+        setLibVer("");
+        setLibName("");
+        setLibReason("");
+    }
+
     const checkInput = () =>{
         if(pyVer === "" || libVer === "" || libName === "" || libReason === "") {
             alert("비워진 값이 존재합니다.");
@@ -41,6 +48,16 @@ function PythonReqForm() {
             
         })
     }
+    
+    const removeForm = () => {
+        let inputList = document.getElementsByClassName("req-d");
+        console.log(inputList)
+        for( let i = 0; i < inputList.length; i++) {
+            console.log(inputList[i].value);
+            inputList[i].value = "";
+        }
+        onReset();
+    }
 
     return(
         <>
@@ -50,28 +67,27 @@ function PythonReqForm() {
             <div className="req-detail">
                 <div>
                     <span>Python Version</span>
-                    <input type={"text"} placeholder={'파이썬 버전을 입력하세요.'} onChange={e => changePyVer(e)}/>
+                    <input type={"text"} className="req-d" placeholder={'파이썬 버전을 입력하세요.'} onChange={e => changePyVer(e)}/>
                 </div>
                 <div>
                     <span>Library Name</span>
-                    <input type={"text"} placeholder={'라이브러리 이름을 입력하세요.'} onChange={e => changeLibName(e)}/>
+                    <input type={"text"} className="req-d" placeholder={'라이브러리 이름을 입력하세요.'} onChange={e => changeLibName(e)}/>
                 </div>
                 <div>
                     <span>Library Version</span>
-                    <input type={"text"} placeholder={'라이브러리 버전을 입력하세요.'} onChange={e => changeLibVer(e)}/>
+                    <input type={"text"} className="req-d" placeholder={'라이브러리 버전을 입력하세요.'} onChange={e => changeLibVer(e)}/>
                 </div>
                 <div>
                     <span>신청 사유</span>
-                    <textarea  placeholder={'신청 사유를 입력하세요.'} onChange={e => changeLibReason(e)}></textarea>
+                    <textarea className="req-d" placeholder={'신청 사유를 입력하세요.'} onChange={e => changeLibReason(e)}></textarea>
                 </div>
             </div>
 
             <div className="btn-tab">
                 <button className="btn blue-btn" onClick={checkInput}>신청</button>
-                <button className="btn white-btn">초기화</button>
+                <button className="btn white-btn" onClick={removeForm}>초기화</button>
             </div>
 
-            <input type={"reset"} value="sadf"></input>
         </section>
         </>
     )

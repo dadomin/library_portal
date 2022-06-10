@@ -29,6 +29,7 @@ const Root = () => (
             <Route path="/change/user" element={<App tab="changeUser"/>}/>
             <Route path="/change/admin" element={<App tab="changeAdmin"/>}/>
             <Route path="/lib/python/req" element={<App tab="pythonReq"/>}/>
+            <Route path="/lib/java/req" element={<App tab="javaReq"></App>}></Route>
         </Routes>
         
     </BrowserRouter>

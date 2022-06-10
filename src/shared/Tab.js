@@ -2,6 +2,7 @@ import ChangeAdmin from "../action/ChangeAdmin";
 import ChangeUser from "../action/ChangeUser";
 import Logout from "../action/Logout";
 import PythonReqForm from "../layout/PythonReqForm";
+import JavaReqForm from "../layout/JavaReqForm";
 import Login from "../pages/Login";
 import Main from "../pages/Main";
 
@@ -31,6 +32,10 @@ function Tab(props) {
 
     if(tab === "pythonReq") {
         return <PythonReqForm/>
+    }
+
+    if(tab === "javaReq") {
+        return <JavaReqForm/>
     }
 }
 

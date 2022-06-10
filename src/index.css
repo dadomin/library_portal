@@ -492,6 +492,10 @@ footer > ul > li {
   justify-content: space-between;
   margin: 21px 0;
 }
+.req-detail-2 > div {
+  flex-direction: column;
+  align-items: stretch;
+}
 .req-detail > div  span {
   flex: 3;
   margin-top: 8px;
@@ -499,10 +503,17 @@ footer > ul > li {
   color: #000;
   font-size: 18px;
 }
+.req-detail > div span {
+  margin-bottom: 21px;
+}
 .req-detail > div > input,
 .req-detail > div > textarea {
   flex: 7;
   font-size: 14px;
+}
+.req-detail-2 > div > textarea {
+  display: block;
+  height: 300px;
 }
 .req-detail > div > textarea {
   height: 300px;
@@ -519,4 +530,77 @@ footer > ul > li {
   margin: 0 12px;
   padding: 0 30px;
   font-size: 14px;
+}
+
+/* java-req */
+
+#req-choice {
+  position: relative;
+  display: block;
+  height: auto;
+  margin-bottom: 150px;
+}
+.ft-file-tab {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+.ft-file-tab > li {
+  flex: 1;
+  padding: 10px;
+}
+/* .ft-file-tab > li > label {
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  line-height: 35px ;
+  border: 1px solid #14d470;
+  display: block;
+  border-radius: 12px;
+} */
+.ft-file-tab > li > label {
+  background-color: #fff;
+  border: 1px solid #14d470;
+  width: 100%;
+  height: 35px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #14d470;
+  display: block;
+  text-align: center;
+  line-height: 35px;
+  cursor: pointer;
+  transition: .3s;
+}
+.ft-file-box {
+  position: absolute;
+  width: 90%;
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s;
+  height: 100px;
+}
+.ft-file-box > * {
+  width: 100%;
+  display: block;
+}
+.ft-file-box > textarea {
+  height: 100%;
+}
+
+
+input[name="ft-file"]:checked ~ label {
+  color: #fff;
+  background-color: #14d470;
+  box-shadow: 0 0 10px #14d4717d;
+}
+input[name="ft-file"]:checked ~ .ft-file-box {
+  visibility: visible;
+  opacity: 1;
 }
