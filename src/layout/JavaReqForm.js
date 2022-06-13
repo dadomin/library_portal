@@ -11,7 +11,7 @@ function JavaReqForm() {
        setFileType(e.target.id);
    }
 
-   const asdf = (e) => {
+   const checkForm = (e) => {
     console.log(fileType)
    }
 
@@ -23,40 +23,40 @@ function JavaReqForm() {
             
             <div className="req-detail req-detail-2">
                 <div id="req-choice">
-                    <p>pom.xml OR build.gradle File</p>
+                    <span>프로젝트 종류</span>
                     <ul className="ft-file-tab">
                         <li>
                             <input type="radio" className="dn" onChange={e=>changeFileType(e)} name="ft-file" id="ft-file" defaultChecked="checked"/>
-                            <label htmlFor="ft-file" className="green-btn">Choose File</label>
-                            <div className="ft-file-box">
-                                <input type="file" id="ft-file-input"/>
-                                <label htmlFor="ft-file-input">
-                                <FontAwesomeIcon icon={faFileCode} />
-                                    <p>파일을 찾아 선택하세요.</p>
-                                </label>
-                            </div>
+                            <label htmlFor="ft-file" className="green-btn">Maven</label>
                         </li>
                         <li>
                             <input type="radio" className="dn"onChange={e=>changeFileType(e)} name="ft-file" id="ft-write"/>
-                            <label htmlFor="ft-write" className="green-btn">Write Directly</label>
-                                    
-                            <div className="ft-file-box">
-                                <textarea/>
-                            </div>
+                            <label htmlFor="ft-write" className="green-btn">Gradle</label>
                         </li>
                     </ul>
 
                     
                 </div>
                 <div>
+                    <span>파일 첨부</span>
+                    
+                    <div className="ft-file-box">
+                        <input type="file" id="ft-file-input" className="dn"/>
+                        <label htmlFor="ft-file-input">
+                        <FontAwesomeIcon icon={faFileCode} />
+                            <p>파일을 찾아 선택하세요.</p>
+                        </label>
+                    </div>
+                </div>
+                <div>
                     <span>신청 사유</span>
-                    <textarea></textarea>
+                    <textarea placeholder="신청 사유를 입력하세요."></textarea>
                 </div>
                 
             </div>
 
             <div className="btn-tab">
-                <button className="btn blue-btn" onClick={asdf}>신청</button>
+                <button className="btn blue-btn" onClick={checkForm}>신청</button>
                 <button className="btn white-btn" >초기화</button>
             </div>
 
