@@ -406,37 +406,43 @@ header>a {
   font-size: 14;
 }
 
-.menu-sub.logout-tab {
-  text-align: right;
+
+.main-menu > div,
+.profile-tab {
+  position: relative;
+  padding: 0 70px;
 }
 
 .menu-sub {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
-  height: 75px;
   background-color: #fff;
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, .1);
   padding: 0;
   visibility: hidden;
   opacity: 0;
   transition: .3s;
+  text-align: center;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .menu-sub>a {
-  height: 100%;
-  padding: 0 90px;
   line-height: 75px;
   color: #6f6f6f;
   font-weight: bold;
   font-size: 17px;
+  display: block;
+  width: 100%;
 }
 
 .menu-sub>a:hover {
   color: #4265ed;
   text-shadow: 0 0px 10px #4265ed;
-  border-bottom: 1px solid #4265ed;
+  background-color: #e5e8f77a;
 }
 
 .main-menu>div:hover>.menu-sub,
@@ -564,21 +570,22 @@ footer > ul > li {
   transition: .3s;
 }
 .ft-file-box {
-  height: 150px;
-  border: 2px dashed rgba(0, 0, 0, 0.297);
-  background-color: #f3f4f5;
-  border-radius: 12px;
 }
 .ft-file-box > label {
   display: block;
   width: 100%;
-  height: 100%;
+  
+  height: 150px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 12px;
+  
+  border: 2px dashed rgba(0, 0, 0, 0.297);
+  background-color: #f3f4f5;
+  border-radius: 12px;
 }
 .ft-file-box > label > svg {
   font-size: 24px;
