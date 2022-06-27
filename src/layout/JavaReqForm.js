@@ -18,6 +18,7 @@ function JavaReqForm() {
     return(
         <>
         <section id="req-form">
+            
             <h1>Java Library</h1>
 
             
@@ -41,7 +42,7 @@ function JavaReqForm() {
                     <span>파일 첨부</span>
                     
                     <div className="ft-file-box">
-                        <input type="file" id="ft-file-input" className=""/>
+                        <input type="file" id="ft-file-input" className="dn"/>
                         <label htmlFor="ft-file-input">
                         <FontAwesomeIcon icon={faFileCode} />
                             <p>파일을 찾아 선택하세요.</p>

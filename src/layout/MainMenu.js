@@ -46,7 +46,7 @@ function UserGreeting(props) {
                 <div>
                     <span>이력관리</span>
                     <div className="menu-sub">
-                        <Link to ={'/'}>Python Library</Link>
+                        <Link to ={'/lib/python/list'}>Python Library</Link>
                         <Link to ={'/'}>Java Library</Link>
                     </div>
                 </div>
