@@ -5,7 +5,11 @@ import PythonReqForm from "../layout/PythonReqForm";
 import JavaReqForm from "../layout/JavaReqForm";
 import Login from "../pages/Login";
 import Main from "../pages/Main";
-import PythonList from "../layout/PythonList";
+import PythonList from "../pages/PythonList";
+import JavaList from "../pages/JavaList";
+import PythonDetail from "../pages/PythonDetail";
+import JavaDetail from "../pages/JavaDetail";
+import UserList from "../pages/UserList";
 
 function Tab(props) {
     const tab = props.tab;
@@ -41,6 +45,22 @@ function Tab(props) {
 
     if(tab === "pythonList") {
         return <PythonList/>
+    }
+
+    if(tab === "javaList") {
+        return <JavaList/>
+    }
+
+    if(tab === "pythonDetail") {
+        return <PythonDetail/>
+    }
+
+    if(tab === "javaDetail") {
+        return <JavaDetail/>
+    }
+
+    if(tab === "userList") {
+        return <UserList/>
     }
 }
 

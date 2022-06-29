@@ -47,7 +47,7 @@ function UserGreeting(props) {
                     <span>이력관리</span>
                     <div className="menu-sub">
                         <Link to ={'/lib/python/list'}>Python Library</Link>
-                        <Link to ={'/'}>Java Library</Link>
+                        <Link to ={'/lib/java/list'}>Java Library</Link>
                     </div>
                 </div>
             </div>
@@ -68,22 +68,18 @@ function UserGreeting(props) {
 
 function AdminGreeting(props) {
     return (
-        <header>
+        <header id="admin-header">
         <Link to={'/'}>라이브러리 반입 프로세스</Link>
         <div id="menu-tab">
             <div className="main-menu">
                 <div><span>이력관리</span>
                     <div className="menu-sub">
-                        <Link to ={'/'}>Python Library</Link>
-                        <Link to ={'/'}>Java Library</Link>
+                        <Link to ={'/lib/python/list'}>Python Library</Link>
+                        <Link to ={'/lib/java/list'}>Java Library</Link>
                     </div>
                 </div>
                 <div>
-                    <span>사용자관리</span>
-                    <div className="menu-sub">
-                        <Link to ={'/'}>Python Library</Link>
-                        <Link to ={'/'}>Java Library</Link>
-                    </div>
+                    <Link to={'/user/list'}>사용자관리</Link>
                 </div>
             </div>
 

@@ -341,6 +341,10 @@ header {
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 99999;
+}
+header#admin-header {
+  background: linear-gradient(to right, #05c474, #395ef0);
 }
 
 header>* {
@@ -362,7 +366,8 @@ header>a {
   float: left;
 }
 
-.main-menu>div>span {
+.main-menu>div>span,
+.main-menu>div>a {
   transition: .3s;
   font-size: 18px;
   color: #fff;
@@ -504,6 +509,18 @@ footer > ul > li {
   flex-direction: column;
   align-items: stretch;
 }
+.req-detail-2 > div > pre {
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: scroll;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  background-color: #faf9f9;
+  padding: 20px 30px;
+  border-radius: 12px;
+}
 .req-detail > div  span {
   flex: 3;
   margin-top: 8px;
@@ -630,6 +647,7 @@ input[name="ft-file"]:checked ~ label {
   margin-right: 20px;
 }
 #record-condition > div > input[type="date"],
+#record-condition > div > input[type="datetime-local"],
 #record-condition > div > input[type="text"] {
   height: 21px;
   font-size: 12px;
@@ -639,7 +657,9 @@ input[name="ft-file"]:checked ~ label {
   flex: 1;
 }
 
-#record-condition > div > input[type="date"] {
+#record-condition > div > input[type="date"],
+
+#record-condition > div > input[type="datetime-local"] {
   flex: 1;
 }
 
@@ -688,6 +708,41 @@ input[name="ft-file"]:checked ~ label {
   border-radius: 6px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.321);
 }
+.record-status.status-1 > h1 {
+  color: #7e97fc;
+}
+.record-status.status-1 > p {
+  background-color: #7e97fc;
+  box-shadow: 0 0 10px 0 #7e97fc9b;
+}
+.record-status.status-2 > h1 {
+  color: #05c474;
+}
+.record-status.status-2 > p {
+  background-color: #05c474;
+  box-shadow: 0 0 10px 0 #05c475ae;
+}
+.record-status.status-3 > h1 {
+  color: #fe9e4b;
+}
+.record-status.status-3 > p {
+  background-color: #fe9e4b;
+  box-shadow: 0 0 10px 0 #fe9e4bb4;
+}
+.record-status.status-4 > h1 {
+  color: #395ef0;
+}
+.record-status.status-4 > p {
+  background-color: #395ef0;
+  box-shadow: 0 0 10px 0 #395df07d;
+}
+.record-status.status-5 > h1 {
+  color: #e23d3d;
+}
+.record-status.status-5 > p {
+  background-color: #e23d3d;
+  box-shadow: 0 0 10px 0 #e23d3d9d;
+}
 .record-list > table {
   width: 100%;
   text-align: center;
@@ -711,11 +766,88 @@ input[name="ft-file"]:checked ~ label {
 }
 .record-list > table tbody tr td {
   padding: 12px 6px;
-  color: #000;
 }
 .record-list > table tbody tr:nth-of-type(2n) {
   background-color: rgba(241, 240, 240, 0.653);
 }
 .record-list > table tbody tr:hover {
   background-color: #e8ecfc;
+}
+
+
+/* 상세보기 */
+.req-detail-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.req-detail-top > div {
+  /* flex: 1; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.req-detail-top > div > h1 {
+  color: #395ef0;
+  font-size: 16px;
+  margin-right: 12px;
+}
+
+#date-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 50px auto;
+  border-radius: 12px;
+  overflow: hidden;
+}
+#date-table th {
+  background-color: #4265ed;
+  color: #fff;
+  padding: 8px 0;
+  border-right: 1px solid #fff;
+}
+#date-table td {
+  width: 33.3%;
+  text-align: center;
+  background-color: #eaf4ff;
+  padding: 12px 0;
+  color: #000;
+  border-right: 1px solid #fff;
+}
+#library-table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+#library-table th {
+  background-color: #4265ed;
+  color: #fff;
+  width: 20%;
+  border-bottom: 1px solid #fff;
+  padding: 12px 0;
+}
+#library-table td {
+  width: 80%;
+  color: #000;
+  background-color: #eaf4ff;
+  border-bottom: 1px solid #fff;
+  padding: 0 20px;
+}
+.req-detail > h1 {
+  color: #395ef0;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.req-detail > p {
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+.req-detail > textarea {
+  width: 100%;
+  height: 500px;
+  resize: none;
 }

@@ -31,6 +31,10 @@ const Root = () => (
             <Route path="/lib/python/req" element={<App tab="pythonReq"/>}/>
             <Route path="/lib/java/req" element={<App tab="javaReq"></App>}></Route>
             <Route path="/lib/python/list" element={<App tab="pythonList"></App>}></Route>
+            <Route path="/lib/java/list" element={<App tab="javaList"/>}></Route>
+            <Route path="/lib/python/detail/:id" element={<App tab="pythonDetail"></App>}></Route>
+            <Route path="/lib/java/detail/:id" element={<App tab="javaDetail"></App>}></Route>
+            <Route path="/user/list" element={<App tab="userList"></App>}></Route>
         </Routes>
         
     </BrowserRouter>

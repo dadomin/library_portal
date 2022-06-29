@@ -38,15 +38,29 @@ function PythonReqForm() {
     const reqLib = () => {
         console.log({pyVer, libName, libVer, libReason});
         axios
-        .post('http://localhost:3787/lib/python/req', {
+        .post('http://localhost:3787/lib/python/req/1', {
             pyVer : pyVer,
             libVer : libVer,
-            libName : libName,
-            libReason : libReason
+            libName : libName
         })
         .then((res)=>{
-            
+            axios
+            .post('http://localhost:3787/lib/python/req/2', {})
+            .then((res2)=>{
+                axios
+                .post('http://localhost:3787/lib/python/req/3', {
+                    userId : JSON.parse(sessionStorage.getItem('user')).user_id,
+                    userName : JSON.parse(sessionStorage.getItem('user')).user_name,
+                    pyId : res2.data[0].id,
+                    libReason : libReason,
+                    libKind : "python",
+                })
+                .then((res3)=>{
+
+                })
+            })
         })
+        
     }
     
     const removeForm = () => {
@@ -62,7 +76,8 @@ function PythonReqForm() {
     return(
         <>
         <section id="req-form">
-            <h1>Python Library</h1>
+            <h3 className="title-sub">라이브러리 반입</h3>
+            <h1 className="title">Python Library</h1>
 
             <div className="req-detail">
                 <div>
