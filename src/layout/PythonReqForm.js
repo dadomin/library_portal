@@ -1,5 +1,6 @@
 import axios from "axios";
 import React,{ useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function PythonReqForm() {
 
@@ -15,8 +16,11 @@ function PythonReqForm() {
     const changeLibName= (e) => setLibName(e.target.value);
     const changeLibReason = (e) => setLibReason(e.target.value);
 
+    const navigate = useNavigate();
     if(now !== "0") {
         alert("일반 사용자만 반입 신청 할 수 있습니다.");
+        
+        navigate("/");
         return;
     }
 

@@ -86,6 +86,11 @@ button {
   background-color: #fff;
   color: #4265ed;
 }
+.red-btn {
+  /* border: 1px solid #f00; */
+  background-color: #f00;
+  color: #fff;
+}
 /* .blue-btn:hover {
   background-color: #fff;
   color: #4265ed;
@@ -124,7 +129,7 @@ textarea:focus {
 
 /* alert-form */
 #alert-form,
-#info-from {
+#info-form {
   display: relative;
   z-index: 999;
   transition: .3s;
@@ -138,6 +143,8 @@ textarea:focus {
   top: 0;
   left: 0;
   cursor: pointer;
+  
+  z-index: 999;
 }
 .alert-txt,
 .info-txt {
@@ -150,6 +157,7 @@ textarea:focus {
   text-align: center;
   padding: 30px 50px;
   border-radius: 21px;
+  z-index: 999;
 }
 .alert-txt > h1 {
   font-weight: bolder;
@@ -167,28 +175,17 @@ textarea:focus {
   margin: 30px auto;
 }
 .alert-txt > button {
-  color: #f00;
-  background-color: #fff;
-  border: 1px solid #f00;
   padding: 10px 20px;
-  border-radius: 12px;
   font-weight: bold;
   font-size: 16px;
 }
-.alert-txt > button:hover {
+.red-btn:hover {
   box-shadow: 0 0 10px 0 rgba(255, 0, 0, 0.391);
 }
 .info-txt > button {
-  color: #6280fa;
-  background-color: #fff;
-  border: 1px solid #6280fa;
   padding: 10px 20px;
-  border-radius: 12px;
   font-weight: bold;
   font-size: 16px;
-}
-.info-txt > button:hover {
-  box-shadow: 0 0 10px 0 #234ae580;
 }
 
 /* login */
@@ -341,7 +338,7 @@ header {
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 99999;
+  z-index: 9;
 }
 header#admin-header {
   background: linear-gradient(to right, #05c474, #395ef0);

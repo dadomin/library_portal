@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 const AdminPythonList = (props) => {
 
+    const impStatusMsg = props.impStatusMsg;
     let pyList = [];
 
     const getList = () => {
@@ -14,7 +15,7 @@ const AdminPythonList = (props) => {
         for(let i = 0; i< pyList.length; i++) {
             let y = pyList[i];
             let imp_status = parseInt(y.imp_status);
-            console.log(props.impStatusMsg[imp_status].id);
+            console.log(impStatusMsg[imp_status].id);
             let a = `
             <tr onclick="location.href='/lib/python/detail/${y.lib_id}'">
                 <td>${y.lib_id}</td>
@@ -24,7 +25,7 @@ const AdminPythonList = (props) => {
                 <td>${y.req_date}</td>
                 <td>${y.req_user_name}</td>
                 <td>
-                    <div class="record-status status-${props.impStatusMsg[imp_status].id}"><p>${props.impStatusMsg[imp_status].msg}</p></div>
+                    <div class="record-status status-${impStatusMsg[imp_status].id}"><p>${impStatusMsg[imp_status].msg}</p></div>
                 </td>
             </tr>
             `;

@@ -10,6 +10,7 @@ import JavaList from "../pages/JavaList";
 import PythonDetail from "../pages/PythonDetail";
 import JavaDetail from "../pages/JavaDetail";
 import UserList from "../pages/UserList";
+import UserDetail from "../pages/UserDetail";
 
 function Tab(props) {
     const tab = props.tab;
@@ -61,6 +62,10 @@ function Tab(props) {
 
     if(tab === "userList") {
         return <UserList/>
+    }
+
+    if(tab === "userDetail") {
+        return <UserDetail/>
     }
 }
 

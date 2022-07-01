@@ -2,14 +2,62 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import {faFileCode} from "@fortawesome/free-solid-svg-icons"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function JavaReqForm() {
-
+    
+    const now = sessionStorage.getItem("now");
+    
     const [fileType, setFileType] = useState("maven");
     const [libReason, setLibReason] = useState("");
-    const [libFile, setLibFile] = useState("");
+    const [libFile, setLibFile] = useState([]);
 
-    const changeLibFile = (e) => {setLibFile(e.target.value)}
+    
+    const navigate = useNavigate();
+    if(now !== "0") {
+        alert("일반 사용자만 반입 신청 할 수 있습니다.");
+        navigate("/");
+        return;
+    }
+
+
+    const emptyFile = () => {
+        setLibFile([]);
+        document.getElementById('req-lib-reason').value = "";
+        document.getElementById('output').textContent = "";
+        alert("파일 형식이 잘못되었습니다.");
+    }
+
+    const removeForm = () => {
+        document.getElementById('req-lib-reason').value = "";
+        document.getElementById('output').textContent = "";
+        setLibFile([]);
+    }
+
+    const changeLibFile = (e) => {
+        let file = e.target.files[0];
+        console.log(file);
+        setLibFile(file); 
+        if(file.name === "undefined") {
+            emptyFile();
+            return;
+        }else if(file.name === "build.gradle"){
+            if(fileType !== "gradle")  {
+                emptyFile();
+                return;
+            }
+        }else if(file.name === "pom.xml") {
+            if(fileType !== "maven")  {
+                emptyFile();
+                return;
+            }
+        }else {
+            emptyFile();
+            return;
+        }
+        readFile(file);
+    }
     const changeLibReason = (e) => {setLibReason(e.target.value)}
     const changeFileType = (e) => {setFileType(e.target.id)}
 
@@ -17,21 +65,19 @@ function JavaReqForm() {
         let fr = new FileReader();
         fr.onload = () => {
             document.getElementById('output').textContent = fr.result;
-            console.log(fr.result);
         }
         fr.readAsText(file);
     }
-    const changeFile = (e) => {
-        console.log(e.target.files[0]);
-        let file = e.target.files[0];
-        readFile(file);
-    }
     const checkForm = (e) => {
-        if(libFile === "") {alert("파일이 비워져있습니다."); return;}
-
+        if(libFile.length === 0) {alert("파일이 비워져있습니다."); return;}
+        if(libReason === "") {alert("신청사유가 비워져있습니다."); return;}
+        javaReq();
     }
-
     
+    const javaReq = (e) => {
+        alert("잘 들어갔어!");
+        console.log(fileType, libReason, libFile);
+    }
 
     return(
         <>
@@ -62,7 +108,7 @@ function JavaReqForm() {
                     <span>파일 첨부</span>
                     
                     <div className="ft-file-box">
-                        <input type="file" id="ft-file-input" className="dn" onChange={e=>changeFile(e)}/>
+                        <input type="file" id="ft-file-input" className="dn" onChange={e=>changeLibFile(e)}/>
                         <label htmlFor="ft-file-input">
                         <FontAwesomeIcon icon={faFileCode} />
                             <p>파일을 찾아 선택하세요.</p>
@@ -72,18 +118,18 @@ function JavaReqForm() {
 
                 <div>
                     <span>파일 첨부 내용</span>
-                    <pre id="output" onChange={e=>changeLibFile(e)}></pre>
+                    <pre id="output"></pre>
                 </div>
                 <div>
                     <span>신청 사유</span>
-                    <textarea placeholder="신청 사유를 입력하세요." onChange={e=>changeLibReason(e)}></textarea>
+                    <textarea placeholder="신청 사유를 입력하세요." onChange={e=>changeLibReason(e)} id="req-lib-reason"></textarea>
                 </div>
                 
             </div>
 
             <div className="btn-tab">
                 <button className="btn blue-btn" onClick={checkForm}>신청</button>
-                <button className="btn white-btn" >초기화</button>
+                <button className="btn white-btn" onClick={removeForm} >초기화</button>
             </div>
 
         </section>

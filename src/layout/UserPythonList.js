@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 
 const UserPythonList = (props) =>{
     
+    const user = props.user;
+    const impStatusMsg = props.impStatusMsg;
+    const now = props.now;
+
     let pyList = [];
     var today = new Date();
 
@@ -65,7 +69,7 @@ const UserPythonList = (props) =>{
                 <td>${y.req_date}</td>
                 <td>${y.req_user_name}</td>
                 <td>
-                    <div class="record-status status-${props.impStatusMsg[imp_status].id}"><p>${props.impStatusMsg[imp_status].msg}</p></div>
+                    <div class="record-status status-${impStatusMsg[imp_status].id}"><p>${impStatusMsg[imp_status].msg}</p></div>
                 </td>
             </tr>
             `;
@@ -88,12 +92,13 @@ const UserPythonList = (props) =>{
             return;
         }
         axios
-        .post('http://localhost:3787/lib/python/list/user', {
+        .post('http://localhost:3787/lib/python/list', {
             startDate : startDate,
             endDate : endDate,
             libName : libName,
-            userId : props.user.user_id,
-            checkStatus : checkStatus
+            userId : user.user_id,
+            checkStatus : checkStatus,
+            userName: user.user_name
         })
         .then((res)=>{
             console.log(res.data);
@@ -105,6 +110,11 @@ const UserPythonList = (props) =>{
 
     useEffect(()=>{
         getPyList();
+        if(now ==="0") {
+            console.log("설정되냐");
+            console.log(user.user_id);
+            console.log(startDate);
+        }
     },[])
 
     return(
@@ -133,7 +143,7 @@ const UserPythonList = (props) =>{
                 </div>
                 <div>
                     <span>신청자</span>
-                    <input type="text" placeholder={props.user.user_name} disabled/>
+                    <input type="text" placeholder={user.user_name} disabled/>
                 </div>
             </section>
 
