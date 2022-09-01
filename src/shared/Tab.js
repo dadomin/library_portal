@@ -28,7 +28,6 @@ function Tab(props) {
     }
 
     if(tab === "changeUser") {
-        console.log('asd');
         return <ChangeUser/>
     }
 
