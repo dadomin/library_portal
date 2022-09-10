@@ -45,7 +45,12 @@ const Login = () => {
         .post('http://133.186.247.196:9000/user/login', {
             userId : id,
             passwd : pw
-        })
+        }, {
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        }
+        )
         .then((res)=>{
             let userData = res.data[0];
             if(userData.status === "fail") {
@@ -57,18 +62,14 @@ const Login = () => {
             sessionStorage.removeItem('user');
 
             sessionStorage.removeItem('user_id');
-            sessionStorage.setItem('user', JSON.stringify(userData));
             sessionStorage.removeItem('now');
-            sessionStorage.setItem('now', userData.admin_type);
+
+            sessionStorage.setItem('user', JSON.stringify(userData));
+            sessionStorage.setItem('now', userData.adminType);
             console.log(sessionStorage);
-            // sessionStorage.user.forEach(x=>{
-            //     console.log(x);
-            // })
-            // openInfo(`${userData.user_name}님 로그인 성공`, true);
             
             alert(`${JSON.parse(sessionStorage.user).user_name}님 로그인 성공`);
             window.location.href= "/";
-            // console.log(sessionStorage.user);
         })
     }
 
