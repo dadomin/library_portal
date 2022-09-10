@@ -42,14 +42,14 @@ const Login = () => {
         }
         
         axios
-        .post('http://localhost:3787/user/login', {
-            id : id,
-            pw : pw
+        .post('http://133.186.247.196:9000/user/login', {
+            userId : id,
+            passwd : pw
         })
         .then((res)=>{
             let userData = res.data[0];
-            if(userData === undefined) {
-                alert("ID 혹은 비밀번호 오류");
+            if(userData.status === "fail") {
+                alert(userData.message);
                 return;
             }
             console.log("로그인 성공");
